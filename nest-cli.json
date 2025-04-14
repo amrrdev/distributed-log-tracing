@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/log-ingestion/src",
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/log-ingestion/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/log-ingestion",
+  "projects": {
+    "dag-builder": {
+      "type": "application",
+      "root": "apps/dag-builder",
+      "entryFile": "main",
+      "sourceRoot": "apps/dag-builder/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/dag-builder/tsconfig.app.json"
+      }
+    },
+    "db": {
+      "type": "library",
+      "root": "libs/db",
+      "entryFile": "index",
+      "sourceRoot": "libs/db/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/db/tsconfig.lib.json"
+      }
+    },
+    "kafka": {
+      "type": "library",
+      "root": "libs/kafka",
+      "entryFile": "index",
+      "sourceRoot": "libs/kafka/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/kafka/tsconfig.lib.json"
+      }
+    },
+    "log-ingestion": {
+      "type": "application",
+      "root": "apps/log-ingestion",
+      "entryFile": "main",
+      "sourceRoot": "apps/log-ingestion/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/log-ingestion/tsconfig.app.json"
+      }
+    },
+    "log-processor": {
+      "type": "application",
+      "root": "apps/log-processor",
+      "entryFile": "main",
+      "sourceRoot": "apps/log-processor/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/log-processor/tsconfig.app.json"
+      }
+    },
+    "proto": {
+      "type": "library",
+      "root": "libs/proto",
+      "entryFile": "index",
+      "sourceRoot": "libs/proto/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/proto/tsconfig.lib.json"
+      }
+    }
+  }
+}

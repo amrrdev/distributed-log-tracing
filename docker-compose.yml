@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  dag-builder-db:
+    image: postgres:16-alpine
+    container_name: dag-builder-db
+    ports:
+      - '5433:5432'
+    environment:
+      POSTGRES_DB: dag-builder
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - dag_data:/var/lib/postgresql/data
+
+  log-ingestion-db:
+    image: postgres:16-alpine
+    container_name: log-ingestion-db
+    ports:
+      - '5434:5432'
+    environment:
+      POSTGRES_DB: log-ingestion
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - log_data:/var/lib/postgresql/data
+
+volumes:
+  dag_data:
+  log_data:
