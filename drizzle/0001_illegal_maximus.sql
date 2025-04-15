@@ -1,0 +1,1 @@
+ALTER TABLE "logs" ALTER COLUMN "timestamp" SET DATA TYPE timestamp;

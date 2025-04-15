@@ -28,7 +28,7 @@ export const logs = pgTable(
     service: text().notNull(),
     level: logLevelEnum('level'),
     message: text('message').notNull(),
-    timestamp: timestamp('timestamp', { withTimezone: true }).notNull(),
+    timestamp: timestamp('timestamp').defaultNow(),
   },
   (table) => [
     index('trace_id_idx').on(table.traceId),

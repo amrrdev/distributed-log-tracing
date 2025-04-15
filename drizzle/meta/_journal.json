@@ -8,6 +8,20 @@
       "when": 1744656529138,
       "tag": "0000_mighty_the_santerians",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1744718036261,
+      "tag": "0001_illegal_maximus",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1744718117090,
+      "tag": "0002_marvelous_supreme_intelligence",
+      "breakpoints": true
     }
   ]
 }

@@ -7,7 +7,6 @@
 /* eslint-disable */
 import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
 import { Observable } from "rxjs";
-import { Timestamp } from "../../../google/protobuf/timestamp";
 
 export const protobufPackage = "logs";
 
@@ -27,7 +26,7 @@ export interface Log {
   service: string;
   message: string;
   level: LogLevel;
-  timestamp: Timestamp | undefined;
+  timestamp: string;
 }
 
 export interface LogAck {

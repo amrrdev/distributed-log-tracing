@@ -2,8 +2,6 @@ syntax = "proto3";
 
 package logs;
 
-import "google/protobuf/timestamp.proto";
-
 service LogIngestionService {
   rpc SendLog(Log) returns (LogAck);
 }
@@ -15,7 +13,7 @@ message Log {
   string service = 4;
   string message = 5;
   LogLevel level = 6;
-  google.protobuf.Timestamp timestamp = 7;
+  string timestamp = 7;
 }
 
 

@@ -23,7 +23,9 @@
     "start:dev:log-processor": "nest start log-processor --watch",
     "start:dev:all": "concurrently \"npm run start:dev:log-ingestion\" \"npm run start:dev:log-processor\" \"npm run start:dev:dag-builder\"",
     "proto:log": "npx protoc --ts_proto_out=. --ts_proto_opt=nestJs=true,stringEnums=true ./libs/proto/src/log.proto",
-    "proto:dag": "npx protoc --ts_proto_out=. --ts_proto_opt=nestJs=true,stringEnums=true ./libs/proto/src/dag.proto"
+    "proto:dag": "npx protoc --ts_proto_out=. --ts_proto_opt=nestJs=true,stringEnums=true ./libs/proto/src/dag.proto",
+    "drizzle:log:generate": "npx drizzle-kit generate --config=libs/db/src/log-ingestion-db/drizzle.config.ts",
+    "drizzle:log:migrate": "npx drizzle-kit migrate --config=libs/db/src/log-ingestion-db/drizzle.config.ts"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.13.3",
@@ -35,6 +37,7 @@
     "@nestjs/platform-express": "^11.0.1",
     "@nestjs/terminus": "^11.0.0",
     "drizzle-orm": "^0.41.0",
+    "kafkajs": "^2.2.4",
     "pg": "^8.14.1",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
