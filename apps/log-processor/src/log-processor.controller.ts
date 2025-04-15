@@ -10,7 +10,7 @@ export class LogProcessorController {
 
   @EventPattern('logs')
   async handleLogMessages(@Payload() log: Log) {
-    console.log('finaly, log consumed from kafka\n', log);
+    console.log('log consumed from kafka\n', log);
     const res = await this.logProcessorService.handleLogMessages(log);
   }
 }

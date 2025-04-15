@@ -1,11 +1,11 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './logs/log.module';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { join } from 'path';
 import { LOGS } from '@app/proto/index';
+import { LogModule } from './log.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(LogModule);
   const grpcServer = app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.GRPC,
     options: {
