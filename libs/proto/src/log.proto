@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package logs;
+
+service LogIngestionService {
+  rpc SendLog(Log) returns (LogAck);
+}
+
+message Log {
+  string traceId = 1;
+  string parentId = 2;
+  string spanId = 3;
+  string service = 4;
+  string message = 5;
+  LogLevel level = 6;
+}
+
+
+enum LogLevel {
+  LOG_LEVEL_UNSPECIFIED = 0;
+  LOG_LEVEL_DEBUG = 1;
+  LOG_LEVEL_INFO = 2;
+  LOG_LEVEL_WARN = 3;
+  LOG_LEVEL_ERROR = 4;
+  LOG_LEVEL_FATAL = 5;
+}
+
+message LogAck {
+  string status = 1;
+}
