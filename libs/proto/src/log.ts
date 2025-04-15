@@ -7,17 +7,17 @@
 /* eslint-disable */
 import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
 import { Observable } from "rxjs";
+import { Timestamp } from "../../../google/protobuf/timestamp";
 
 export const protobufPackage = "logs";
 
 export enum LogLevel {
-  LOG_LEVEL_UNSPECIFIED = 0,
-  LOG_LEVEL_DEBUG = 1,
-  LOG_LEVEL_INFO = 2,
-  LOG_LEVEL_WARN = 3,
-  LOG_LEVEL_ERROR = 4,
-  LOG_LEVEL_FATAL = 5,
-  UNRECOGNIZED = -1,
+  LOG_LEVEL_INFO = "LOG_LEVEL_INFO",
+  LOG_LEVEL_DEBUG = "LOG_LEVEL_DEBUG",
+  LOG_LEVEL_WARN = "LOG_LEVEL_WARN",
+  LOG_LEVEL_ERROR = "LOG_LEVEL_ERROR",
+  LOG_LEVEL_FATAL = "LOG_LEVEL_FATAL",
+  UNRECOGNIZED = "UNRECOGNIZED",
 }
 
 export interface Log {
@@ -27,6 +27,7 @@ export interface Log {
   service: string;
   message: string;
   level: LogLevel;
+  timestamp: Timestamp | undefined;
 }
 
 export interface LogAck {

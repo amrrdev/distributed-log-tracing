@@ -43,7 +43,9 @@
       "entryFile": "main",
       "sourceRoot": "apps/log-ingestion/src",
       "compilerOptions": {
-        "tsConfigPath": "apps/log-ingestion/tsconfig.app.json"
+        "tsConfigPath": "apps/log-ingestion/tsconfig.app.json",
+        "assets": ["libs/proto/src/*.proto"],
+        "watchAssets": true
       }
     },
     "log-processor": {

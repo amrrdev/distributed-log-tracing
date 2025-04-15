@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package logs;
 
+import "google/protobuf/timestamp.proto";
+
 service LogIngestionService {
   rpc SendLog(Log) returns (LogAck);
 }
@@ -13,17 +15,18 @@ message Log {
   string service = 4;
   string message = 5;
   LogLevel level = 6;
+  google.protobuf.Timestamp timestamp = 7;
 }
 
 
 enum LogLevel {
-  LOG_LEVEL_UNSPECIFIED = 0;
+  LOG_LEVEL_INFO = 0;
   LOG_LEVEL_DEBUG = 1;
-  LOG_LEVEL_INFO = 2;
-  LOG_LEVEL_WARN = 3;
-  LOG_LEVEL_ERROR = 4;
-  LOG_LEVEL_FATAL = 5;
+  LOG_LEVEL_WARN = 2;
+  LOG_LEVEL_ERROR = 3;
+  LOG_LEVEL_FATAL = 4;
 }
+
 
 message LogAck {
   string status = 1;

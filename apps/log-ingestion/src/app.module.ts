@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { LogIngestionDBModule } from '../../../libs/db/src/log-ingestion-db/log-ingestion-db.module';
+import { LogsController } from './logs/log.controller';
+import { LogsService } from './logs/log.service';
 
 @Module({
   imports: [LogIngestionDBModule],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [LogsController],
+  providers: [LogsService],
 })
 export class AppModule {}
