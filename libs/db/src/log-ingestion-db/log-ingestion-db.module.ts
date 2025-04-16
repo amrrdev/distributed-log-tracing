@@ -19,7 +19,7 @@ import { Pool } from 'pg';
           'LOG_INGESTION_DATABASE',
         );
         if (!logIngestionConnectionString) {
-          throw new Error('DAG_DATABASE_URL is not defined');
+          throw new Error('LOG_DATABASE_URL is not defined');
         }
         const pool = new Pool({
           connectionString: logIngestionConnectionString,

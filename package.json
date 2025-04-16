@@ -25,7 +25,9 @@
     "proto:log": "npx protoc --ts_proto_out=. --ts_proto_opt=nestJs=true,stringEnums=true ./libs/proto/src/log.proto",
     "proto:dag": "npx protoc --ts_proto_out=. --ts_proto_opt=nestJs=true,stringEnums=true ./libs/proto/src/dag.proto",
     "drizzle:log:generate": "npx drizzle-kit generate --config=libs/db/src/log-ingestion-db/drizzle.config.ts",
-    "drizzle:log:migrate": "npx drizzle-kit migrate --config=libs/db/src/log-ingestion-db/drizzle.config.ts"
+    "drizzle:log:migrate": "npx drizzle-kit migrate --config=libs/db/src/log-ingestion-db/drizzle.config.ts",
+    "drizzle:dag:generate": "npx drizzle-kit generate --config=libs/db/src/dag-builder-db/drizzle.config.ts",
+    "drizzle:dag:migrate": "npx drizzle-kit migrate --config=libs/db/src/dag-builder-db/drizzle.config.ts"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.13.3",

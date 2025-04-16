@@ -1,0 +1,64 @@
+{
+  "id": "34484033-16f6-44bb-b9dc-bef8ee8f675e",
+  "prevId": "9c9d27d0-feda-414e-906b-25e7f24ba664",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.dags": {
+      "name": "dags",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "trace_id": {
+          "name": "trace_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "root_span_id": {
+          "name": "root_span_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "dag_json": {
+          "name": "dag_json",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "timestamp": {
+          "name": "timestamp",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

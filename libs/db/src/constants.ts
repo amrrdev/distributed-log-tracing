@@ -1,2 +1,2 @@
 export const LOG_INGESTION_DB = 'LOG_INGESTION_DB';
-export const DAG_DAG_BUILDER_DB = 'DAG_DAG_BUILDER_DB';
+export const DAG_BUILDER_DB = 'DAG_BUILDER_DB';
