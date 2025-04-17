@@ -1,4 +1,4 @@
-# Distributed Logging System
+# Distributed Logging Tracing System
 
 A high-performance, distributed logging system built for observability at scale. Designed to capture and query structured logs enriched with tracing metadata (trace ID, span ID, parent ID), enabling efficient log retrieval in microservice environments.
 
@@ -247,4 +247,3 @@ DAGs are stored with the following schema:
 
 - **Error Notification Service**: Implement alerting for critical errors as shown in the architecture diagram
 - **REST API Wrapper**: Add REST endpoints for easier integration with web frontends
-- \*\*DAG Visualization
