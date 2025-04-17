@@ -1,2 +1,2 @@
 export const LOGS = 'logs';
-export const DAGS = 'dags';
+export const QUERY = 'query';

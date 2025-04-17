@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package query;
+
+import "google/protobuf/struct.proto";
+
+
+service QueryService {
+  rpc GetLogs(Empty) returns (LogList);
+  rpc GetDags(Empty) returns (DagList);
+  rpc GetLogsByTraceId (TraceIdRequest) returns (LogList);
+  rpc GetDagByTraceId (TraceIdRequest) returns (Dag);
+}
+
+message Empty {}
+
+message TraceIdRequest {
+  string traceId = 1;
+}
+
+message Dag {
+  string traceId = 1;
+  string rootSpanId = 2;
+  google.protobuf.Struct dagJson = 3;
+}
+
+message Log {
+  string traceId = 1;
+  string parentId = 2;
+  string spanId = 3;
+  string service = 4;
+  string message = 5;
+  string level = 6;
+  string timestamp = 7;
+}
+
+message DagList {
+  repeated Dag dags = 1;
+}
+
+message LogList {
+  repeated Log logs = 1;
+}

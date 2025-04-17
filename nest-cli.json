@@ -44,7 +44,9 @@
       "sourceRoot": "apps/log-ingestion/src",
       "compilerOptions": {
         "tsConfigPath": "apps/log-ingestion/tsconfig.app.json",
-        "assets": ["libs/proto/src/*.proto"],
+        "assets": [
+          "libs/proto/src/*.proto"
+        ],
         "watchAssets": true
       }
     },
@@ -64,6 +66,15 @@
       "sourceRoot": "libs/proto/src",
       "compilerOptions": {
         "tsConfigPath": "libs/proto/tsconfig.lib.json"
+      }
+    },
+    "query-service": {
+      "type": "application",
+      "root": "apps/query-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/query-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/query-service/tsconfig.app.json"
       }
     }
   }
