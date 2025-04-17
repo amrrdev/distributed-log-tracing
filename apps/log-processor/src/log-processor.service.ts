@@ -8,6 +8,7 @@ import { Log, LogLevel } from '../../../libs/proto/src';
 import { logs } from '../../../libs/db/src/log-ingestion-db/log-ingestion.schema';
 import { eq } from 'drizzle-orm';
 import { dags } from '../../../libs/db/src/dag-builder-db/dag-builder-db.schema';
+import { tryCatch } from '../../../libs/types/error';
 
 type LogNode = {
   spanId: string;
@@ -99,21 +100,25 @@ export class LogProcessorService {
   }
 
   async handleLogMessages(log: Log) {
-    try {
-      await this.logIngestionDB.insert(logs).values({
-        traceId: log.traceId,
-        parentId: log.parentId || null,
-        spanId: log.spanId,
-        service: log.service,
-        level: this.mapEnum(log.level),
-        message: log.message,
-      });
+    const { data, error } = await tryCatch(this._handleLogMessages(log));
+    if (error) {
+      this.logger.error('Could not write log to DB', error);
+    }
+    return data;
+  }
 
-      if (Number(log.level) === this.mapEnumToNums(LogLevel.LOG_LEVEL_ERROR)) {
-        await this.buildDag(log.traceId);
-      }
-    } catch (err) {
-      this.logger.error('Could not write log to DB', err);
+  async _handleLogMessages(log: Log) {
+    await this.logIngestionDB.insert(logs).values({
+      traceId: log.traceId,
+      parentId: log.parentId || null,
+      spanId: log.spanId,
+      service: log.service,
+      level: this.mapEnum(log.level),
+      message: log.message,
+    });
+
+    if (Number(log.level) === this.mapEnumToNums(LogLevel.LOG_LEVEL_ERROR)) {
+      await this.buildDag(log.traceId);
     }
   }
 }
